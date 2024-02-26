@@ -29,7 +29,8 @@ except EnvironmentError:
 if os.name == "nt":
     extensions = [
         Extension(
-            'pyinsane2.wia._rawapi', [
+            'rawcapi',
+            sources=[
                 'pyinsane2/wia/properties.cpp',
                 'pyinsane2/wia/rawapi.cpp',
                 'pyinsane2/wia/trace.cpp',

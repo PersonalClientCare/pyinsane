@@ -1,3 +1,7 @@
+2024-02-26 : 2.1.0:
+- general: fix make version
+- WIA: update c bindings and extension compiling
+
 2018-xx-xx : 2.0.13:
 - Sane: Support of Epson DS-310: Do not try to set a value on an option that
   can have only one value. Sane driver may return an error.

@@ -4,13 +4,13 @@ import os
 import queue
 import threading
 
-from . import _rawapi
+import rawcapi
 from .. import util
 
 logger = logging.getLogger(__name__)
 
 
-_rawapi.register_logger(0, logger)
+rawcapi.register_logger(0, logger)
 
 
 SINGLE_THREAD = bool(int(os.getenv("PYINSANE_SINGLE_THREAD", 0)))
@@ -84,7 +84,7 @@ if not SINGLE_THREAD:
 
 
 def _init():
-    _rawapi.init()
+    rawcapi.init()
 
 
 def init():
@@ -92,7 +92,7 @@ def init():
 
 
 def _open(devid):
-    out = _rawapi.open(devid)
+    out = rawcapi.open(devid)
     if out is None:
         raise WIAException("Failed to open {}".format(devid))
     return out
@@ -103,7 +103,7 @@ def open(devid):
 
 
 def _get_devices():
-    devices = _rawapi.get_devices()
+    devices = rawcapi.get_devices()
     if devices is None:
         raise WIAException("Failed to get device list")
     return devices
@@ -114,7 +114,7 @@ def get_devices():
 
 
 def _get_sources(dev):
-    sources = _rawapi.get_sources(dev)
+    sources = rawcapi.get_sources(dev)
     if sources is None:
         raise WIAException("Failed to get sources")
     return sources
@@ -125,7 +125,7 @@ def get_sources(dev):
 
 
 def _get_properties(dev_or_src):
-    properties = _rawapi.get_properties(dev_or_src)
+    properties = rawcapi.get_properties(dev_or_src)
     if properties is None:
         raise WIAException("Failed to get scanner properties")
     return properties
@@ -136,7 +136,7 @@ def get_properties(dev_or_src):
 
 
 def _get_constraints(dev_or_src):
-    constraints = _rawapi.get_constraints(dev_or_src)
+    constraints = rawcapi.get_constraints(dev_or_src)
     if constraints is None:
         raise WIAException("Failed to get properties constraints")
     return constraints
@@ -147,7 +147,7 @@ def get_constraints(dev_or_src):
 
 
 def _set_property(dev_or_src, propname, propvalue):
-    ret = _rawapi.set_property(dev_or_src, propname, propvalue)
+    ret = rawcapi.set_property(dev_or_src, propname, propvalue)
     if not ret:
         raise WIAException("Failed to set scanner properties")
 
@@ -207,7 +207,7 @@ class WiaCallbacks(object):
 
 
 def _start_scan(src, out):
-    ret = _rawapi.download(
+    ret = rawcapi.download(
         src,
         out.get_data_cb,
         out.end_of_page_cb,
@@ -228,4 +228,4 @@ def start_scan(src):
 
 
 def exit():
-    _rawapi.exit()
+    rawcapi.exit()

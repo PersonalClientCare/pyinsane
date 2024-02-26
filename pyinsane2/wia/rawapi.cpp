@@ -924,22 +924,22 @@ static PyMethodDef rawapi_methods[] = {
 #if PY_VERSION_HEX < 0x03000000
 
 PyMODINIT_FUNC
-init_rawapi(void)
+init_rawcapi(void)
 {
-    Py_InitModule("_rawapi", rawapi_methods);
+    Py_InitModule("rawcapi", rawapi_methods);
 }
 
 #else
 
 static struct PyModuleDef rawapi_module = {
     PyModuleDef_HEAD_INIT,
-    "_rawapi",
+    "rawcapi",
     NULL /* doc */,
     -1,
     rawapi_methods,
 };
 
-PyMODINIT_FUNC PyInit__rawapi(void)
+PyMODINIT_FUNC PyInit_rawcapi(void)
 {
     return PyModule_Create(&rawapi_module);
 }

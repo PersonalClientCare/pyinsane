@@ -29,7 +29,7 @@ __all__ = [
     '__version__',
 ]
 
-__version__ = "2.0.10"
+__version__ = "2.1.0"
 
 
 def __normalize_value(value):
