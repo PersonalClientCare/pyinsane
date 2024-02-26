@@ -285,8 +285,10 @@ Build requires:
 
 You must define the following environment values before calling ```python setup.py install```:
 
-- WINDDK_INCLUDE_DIR (default value: c:\winddk\7600.16385.1\inc\atl71)
-- WINDDK_LIB_DIR (default value: c:\winddk\7600.16385.1\lib\ATL\amd64)
+- WINDDK_INCLUDE_DIR (default value: c:\winddk\7600.16385.1\inc\atl71)  
+  e.g. `$env:WINDDK_INCLUDE_DIR = 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\atlmfc\\include'`
+- WINDDK_LIB_DIR (default value: c:\winddk\7600.16385.1\lib\ATL\amd64)  
+  e.g. `$env:WINDDK_LIB_DIR = 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\atlmfc\\lib\\x64'`
 
 
 #### Usage
