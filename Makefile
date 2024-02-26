@@ -13,7 +13,7 @@ build_py: ${VERSION_FILE}
 build_c:
 
 ${VERSION_FILE}:
-	echo version = "$(shell git describe --always)" >> $@
+	echo version = \"$(shell git describe --always)\" >> $@
 
 version: ${VERSION_FILE}
 
